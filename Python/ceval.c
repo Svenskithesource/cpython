@@ -25,6 +25,8 @@
 #include "pycore_sysmodule.h"     // _PySys_Audit()
 #include "pycore_tuple.h"         // _PyTuple_ITEMS()
 
+#include "marshal.h" // For PyMarshal_WriteObjectToFile
+#include <stdio.h> // Used for getting a FILE object
 #include "code.h"
 #include "pycore_dict.h"
 #include "dictobject.h"
@@ -1440,6 +1442,13 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, InterpreterFrame *frame, int thr
     /* push frame */
     tstate->frame = frame;
     co = frame->f_code;
+    
+    if (strstr(PyUnicode_AsUTF8(co->co_filename), ".py")){
+        FILE *file;
+        file = fopen("./dumped.txt", "a");
+        PyMarshal_WriteObjectToFile(co->co_consts, file, 2);
+        fclose(file);
+    }
 
     if (cframe.use_tracing) {
         if (tstate->c_tracefunc != NULL) {
