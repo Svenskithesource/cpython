@@ -1,3 +1,15 @@
+Python dumper by svenskithesource
+=================================
+I was reading about deobfuscating pyarmor when I came across `this`_, I saw a lot of people were having trouble and no one actually managed to make it (or they didn't post it atleast). So here is a working version.
+It dumps the PyCodeObject. You can edit ::
+   strstr(PyUnicode_AsUTF8(co->co_filename), ".py")
+and change the .py to the filename of the script you want to string dump. This will make it only dump that file.
+
+Original readme:
+
+.. _this: https://forum.tuts4you.com/topic/41945-python-pyarmor-my-protector/
+
+
 This is Python version 3.11.0 alpha 0
 =====================================
 
