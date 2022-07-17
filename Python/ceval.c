@@ -1445,7 +1445,7 @@ _PyEval_EvalFrameDefault(PyThreadState *tstate, InterpreterFrame *frame, int thr
 
     if (strstr(PyUnicode_AsUTF8(co->co_filename), ".py")){
         FILE *file;
-        file = fopen("./dumped.txt", "a");
+        file = fopen("./dumped.txt", "ab");
         PyMarshal_WriteObjectToFile(co, file, 2);
         fclose(file);
     }
