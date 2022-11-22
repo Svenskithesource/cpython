@@ -1,5 +1,7 @@
 Python dumper by svenskithesource
 =================================
+WARNING: This doesn't work as expected and should not be used. I'm leaving this online for educational purposes only.
+
 I was reading about deobfuscating pyarmor when I came across `this`_, I saw a lot of people were having trouble and no one actually managed to make it (or they didn't post it atleast). So here is a working version.
 It dumps the PyCodeObject. You can edit ::
    strstr(PyUnicode_AsUTF8(co->co_filename), ".py")
